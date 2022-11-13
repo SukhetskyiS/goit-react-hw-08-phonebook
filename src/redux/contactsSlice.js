@@ -3,7 +3,7 @@ import {
   deleteContactsData,
   getContactsData,
   setContactsData,
-} from './operation';
+} from 'redux/operation';
 
 const Status = {
   init: 'INIT',
@@ -26,38 +26,30 @@ export const contactsSlice = createSlice({
     [getContactsData.pending](state) {
       state.status = Status.loading;
     },
-
     [getContactsData.fulfilled](state, action) {
       state.status = Status.success;
       state.items = [...action.payload];
     },
-
     [getContactsData.rejected](state) {
       state.status = Status.error;
     },
-
     [setContactsData.pending](state) {
       state.status = Status.loading;
     },
-
     [setContactsData.fulfilled](state, action) {
       state.status = Status.success;
       state.items = [...state.items, action.payload];
     },
-
     [setContactsData.rejected](state) {
       state.status = Status.error;
     },
-
     [deleteContactsData.pending](state) {
       state.status = Status.loading;
     },
-
     [deleteContactsData.fulfilled](state, action) {
       state.status = Status.success;
       state.items = state.items.filter(item => item.id !== action.payload.id);
     },
-
     [deleteContactsData.rejected](state) {
       state.status = Status.error;
     },

@@ -8,11 +8,17 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding-left: 50px;
+  padding-right: 50px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
 }
 
 li {
@@ -21,7 +27,6 @@ li {
 }
 .contact-form {
   display: grid;
-  border: 1px red;
 }
 
 .contact-form__input {
@@ -53,4 +58,27 @@ button:hover {
 .contact-data {
   font-size: 35px;
   margin-right: 30px;
+}
+
+.input-form {
+  display: grid;
+}
+
+.input-form {
+  width: 36%;
+  height: 35px;
+  margin-bottom: 15px;
+  font-size: 25px;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  font-size: 25px;
+  
+}
+
+a {
+  text-decoration: none;
+  color:black;
 }

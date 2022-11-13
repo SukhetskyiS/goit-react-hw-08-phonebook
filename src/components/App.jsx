@@ -1,32 +1,36 @@
-import { ContactForm } from './ContactForm/ContactForm';
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
-import { useEffect } from 'react';
+import { PhoneBook } from 'views/ContactsView';
+import { Login } from 'views/LogInView';
+import { Registration } from 'views/RegistrationView';
+import { Suspense, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getContactsData } from 'redux/operation';
+import { Route, Routes } from 'react-router-dom';
+import { getUser } from 'redux/auth/authOperation';
+import { Layout } from './Layout';
+import AppBar from './AppBar';
+import { UserData } from './UserData';
 
-export function App() {
+export const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getContactsData());
+    dispatch(getUser());
   }, [dispatch]);
 
   return (
-    <div
-      style={{
-        height: '100vh',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101',
-      }}
-    >
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <h2>Contacts</h2>
-      <Filter />
-      <ContactList />
+    <div>
+      <Layout>
+        <Suspense>
+          <Routes>
+            <Route path="/" element={<AppBar />}>
+              <Route path="/register" element={<Registration />} />
+              <Route path="/login" element={<Login />} />
+            </Route>
+            <Route path="/" element={<UserData />}>
+              <Route path="/contacts" element={<PhoneBook />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      </Layout>
     </div>
   );
-}
+};
