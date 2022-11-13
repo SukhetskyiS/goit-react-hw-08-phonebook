@@ -8,7 +8,7 @@ export const Header = () => {
   const isLoggedIn = useSelector(getIsLoggedIn);
 
   return (
-    <header>
+    <header className="header">
       <nav className="navbar">
         <NavLink end to="/">
           Home
@@ -27,7 +27,7 @@ export const Header = () => {
       {isLoggedIn && (
         <>
           <UserMenu />
-          <NavLink to="/contacts">Contacts</NavLink>
+          <NavLink to="/contacts"></NavLink>
         </>
       )}
     </header>

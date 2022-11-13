@@ -3,7 +3,6 @@ import { logOut } from 'redux/auth/authOperation';
 
 function UserMenu() {
   const name = useSelector(state => state.auth.user?.name);
-  const email = useSelector(state => state.auth.user?.email);
   const dispatch = useDispatch();
 
   const handleLogOut = () => {
@@ -14,8 +13,7 @@ function UserMenu() {
     <>
       <ul>
         <li>
-          <p>Hello {name}</p>
-          <p>{email}</p>
+          <p className="logout">Hello, {name}</p>
           <button type="button" onClick={handleLogOut}>
             Logout
           </button>
